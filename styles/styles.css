@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --green200: hsl(148, 38%, 91%);
+  --green600: hsl(169, 82%, 27%);
+  --red: hsl(0, 66%, 54%);
+  --white: hsl(0, 0%, 100%);
+  --grey500: hsl(186, 15%, 59%);
+  --grey900: hsl(187, 24%, 22%);
+}
+
+body {
+  height: 100vh;
+  width: 23.438rem;
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=styles.css.map */
