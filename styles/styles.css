@@ -28,11 +28,11 @@ body {
   font-size: 1rem;
   justify-content: center;
   margin: auto;
+  align-items: flex-start;
 }
 
 /*-- LAYOUT --*/
 main {
-  align-self: first baseline;
   display: flex;
   flex-direction: column-reverse;
   height: auto;
@@ -44,6 +44,7 @@ form {
   border-radius: 1rem;
   gap: 2rem;
   padding: 1.5rem;
+  margin-block: 2rem;
 }
 
 .form-group {
@@ -198,12 +199,13 @@ input.invalid, textarea.invalid {
     cursor: pointer;
   }
   main {
-    align-self: center;
     width: auto;
+    margin: auto;
   }
   form {
     width: 46rem;
     padding: 2.5rem;
+    margin-block: 0;
   }
   .full-name, .radio-container {
     flex-direction: row;

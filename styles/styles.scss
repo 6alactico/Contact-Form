@@ -26,11 +26,11 @@ body {
     font-size: $fs-base;
     justify-content: center;
     margin: auto;
+    align-items: flex-start;
 }
 
 /*-- LAYOUT --*/
 main {
-    align-self: first baseline;
     display: flex;
     flex-direction: column-reverse;
     height: auto; 
@@ -42,6 +42,7 @@ form {
     border-radius: $br-lg;
     gap: $sp-6;
     padding: $sp-5;
+    margin-block: $sp-6;
 }
 
 .form-group { gap: $sp-3; }
@@ -179,9 +180,13 @@ input.invalid, textarea.invalid { outline: 0.10rem solid var(--red); }
     input, .radio-button, 
     textarea, button { cursor: pointer; }
 
-    main { align-self: center; width: auto; }
+    main { width: auto; margin: auto;}
 
-    form { width: 46rem; padding: 2.5rem; }
+    form { 
+        width: 46rem; 
+        padding: 2.5rem; 
+        margin-block: $sp-0;
+    }
 
     .full-name, .radio-container {
         flex-direction: row;
