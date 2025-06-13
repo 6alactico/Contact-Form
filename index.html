@@ -4,70 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karla:normal,500,700;">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="script.js" defer></script>
   <title>Frontend Mentor | Contact form</title>
 </head>
 <body>
-  <form action="/contact" method="POST" novalidate>
-    <h1>Contact Us</h1>
+  <main>
+    <form id="contact-form" class="flex-container" novalidate>
+      <h1>Contact Us</h1>
 
-    <div>
-      <label for="first-name">First Name <span class="required" aria-hidden="true">*</span></label>
-      
-      <input type="text" id="first-name" name="first-name" autocomplete="cc-given-name" aria-describedby="required-message" aria-invalid="true" required>
-      
-      <span class="required-message">This field is required</span>
-    </div>
+      <div class="full-name flex-container">
+        <div class="form-group flex-container">
+          <label for="first-name">First Name <span class="required" aria-hidden="true">*</span></label>
+          <input 
+          type="text"
+          id="first-name" name="first-name" class="text-input"
+          pattern="[A-Za-z]{2,}" autocomplete="given-name" 
+          data-error-id="first-name-error" required>
+          <span id="first-name-error" class="error-message">This field is required</span>
+        </div>
+        <div class="form-group flex-container">
+          <label for="last-name">Last Name <span class="required" aria-hidden="true">*</span></label>
+          <input 
+          type="text" 
+          id="last-name" name="last-name" class="text-input"
+          pattern="[A-Za-z]{2,}" autocomplete="family-name" 
+          data-error-id="last-name-error" required>
+          <span id="last-name-error" class="error-message">This field is required</span>
+        </div>
+      </div>
 
-    <div>
-      <label for="last-name">Last Name <span class="required">*</span></label>
-
-      <input type="text" id="last-name" name="last-name" autocomplete="cc-given-name" aria-describedby="required-message" aria-invalid="true" required>
-
-      <span class="required-message">This field is required</span>
-    </div>
-
-    <div>
-      <label for="email-address">Email Address <span class="required" aria-hidden="true">*</span></label>
-
-      <input type="email" id="email-address" name="email-address" autocomplete="email" aria-describedby="email-error required-message" aria-invalid="true" required>
-
-      <span id="email-error" class="error-message">Please enter a valid email address</span>
-
-      <span class="required-message">This field is required</span>
-    </div>
+      <div class="form-group flex-container">
+        <label for="email-address">Email Address <span class="required" aria-hidden="true">*</span></label>
+        <input 
+        type="email" 
+        id="email-address" name="email-address" class="text-input"
+        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" 
+        autocomplete="email" data-error-id="email-error" required>
+        <span id="email-error" class="error-message">Please enter a valid email address</span>
+      </div>
     
-    <fieldset style="border: none;">
-      <legend>Query Type <span class="required" aria-hidden="true">*</span></legend>
+      <fieldset style="border: none;">
+        <legend>Query Type <span class="required" aria-hidden="true">*</span></legend>
+          <div class="radio-container flex-container">
+            <div class="radio-button form-group  flex-container">
+              <input 
+              type="radio" id="general-enquiry" name="query" value="enquiry" data-error-id="radio-error" required>
+              <label for="general-enquiry">General Enquiry</label>
+            </div>
+            <div class="radio-button form-group flex-container">
+              <input 
+              type="radio" id="support-request" name="query" value="request" data-error-id="radio-error" required>
+              <label for="support-request">Support Request</label>
+            </div>
+          </div>
+        <span id="radio-error" class="error-message">Please select a query type</span>
+      </fieldset>
 
-      <input type="radio" id="general-enquiry" name="query" value="enquiry" aria-describedby="query-error" required>General Enquiry</input>
+      <div class="form-group flex-container">
+        <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+        <textarea id="message" name="message" class="text-input" rows="15" cols="50" data-error-id="message-error" required></textarea>
+        <span id="message-error" class="error-message">This field is required</span>
+      </div>
 
-      <input type="radio" id="support-request" name="query" value="request" aria-describedby="query-error" required>Support Request</input>
+      <div class="form-group checkbox-container flex-container">
+        <div class="flex-container">
+          <input 
+          type="checkbox" id="checkbox" name="checkbox" 
+          data-error-id="checkbox-error" required>
+          <label for="checkbox">I consent to being contacted by the team <span class="required" aria-hidden="true">*</span></label>
+        </div>
+        <span id="checkbox-error" class="error-message">To submit this form, please consent to being contacted</span>
+      </div>
 
-      <span id="query-error" class="error-message">Please select a query type</span>
-    </fieldset>
-
-    <div>
-      <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
-
-      <textarea id="message" name="message" aria-describedby="required-message" required></textarea>
-
-      <span class="required-message">This field is required</span>
+      <button id="button" type="submit" name="button">Submit</button>
+    </form>
+    <!--Success message-->
+    <div id="success-message">
+      <header class="flex-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21"><path fill="#fff" d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z"/></svg>
+        <h2>Message Sent!</h2>
+      </header>
+      <p>Thanks for completing the form. We'll be in touch soon!</p>
     </div>
-
-    <div>
-      <label for="checkbox">Checkbox</label>
-      <input type="checkbox" id="checkbox" name="checkbox" aria-invalid="true" aria-describedby="checkbox-error" required>I consent to being contacted by the team<span class="required" aria-hidden="true">*</span></input>
-
-      <span id="checkbox-error" class="error-message">To submit this form, please consent to being contacted</span>
-
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-
-  <!--Success message-->
-  <div hidden>
-    <p>Message Sent!</p>
-    <p>Thanks for completing the form. We'll be in touch soon!</p>
-  </div>
+  </main>
 </body>
 </html>

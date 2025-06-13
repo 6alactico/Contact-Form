@@ -11,8 +11,184 @@
     --grey900: hsl(187, 24%, 22%);
 }
 
+// Border radius
+$br-xs: 0.25rem;
+$br-sm: 0.5rem;
+$br-md: 0.75rem;
+$br-lg: 1rem;
+
 body {
     @include body;
+    background-color: var(--green200);
+    color: var(--grey900);
+    display: flex;
     font-family: "Karla", sans-serif;
     font-size: $fs-base;
+    justify-content: center;
+    margin: auto;
+}
+
+/*-- LAYOUT --*/
+main {
+    align-self: first baseline;
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto; 
+    width: 21.5rem; 
+}
+
+form {
+    background-color: var(--white);
+    border-radius: $br-lg;
+    gap: $sp-6;
+    padding: $sp-5;
+}
+
+.form-group { gap: $sp-3; }
+.full-name { gap: $sp-6; }
+.radio-container { padding: $sp-4 $sp-0; }
+
+.checkbox-container {
+    gap: $sp-3;
+    margin-block: $sp-2;
+
+    div {
+        flex-direction: row;
+
+        & label {
+            display: block;
+            line-height: 1.5rem;
+            margin-inline-start: 1rem;
+            margin-inline-end: 1rem;
+        }
+    }
+}
+
+/*-- CONTENT --*/
+.required { color: var(--green600); }
+h1 { color: var(--grey900);}
+
+/*-- INPUT & FIELDSET ELEMENTS --*/
+input[type="text"], input[type="email"], 
+textarea, .radio-button {
+    border: none;
+    border-radius: $br-sm;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+input[type="text"], input[type="email"] {
+    height: 3rem;
+    padding: $sp-0 $sp-4;
+}
+
+textarea {
+    color: var(--grey900);
+    resize: none;
+    padding: $sp-4;
+}
+
+/*-- RADIO & CHECKBOX --*/
+input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--green600);
+    vertical-align: middle;
+    width: 1.25rem;
+}
+
+input[type="radio"] { 
+    height: 1.2rem; 
+    margin-inline-start: $sp-5; 
+    background-color: var(--green600);
+}
+
+fieldset {
+    div { gap: 1rem; }
+    span { margin-block-start: $sp-4; }
+}
+
+/*-- RADIO BUTTON WRAPPER --*/
+.radio-button {
+    align-items: center;
+    flex-direction: row;
+    height: 3rem;
+    font-size: $fs-md;
+
+    &.selected {
+        background-color: var(--green200);  
+        outline: 0.10rem solid var(--green600);
+    }
+}
+
+/*-- BUTTON --*/
+button {
+    background-color: var(--green600);
+    border: none;
+    border-radius: $br-md;
+    color: var(--white);
+    font-family: inherit;
+    font-size: $fs-md;
+    font-weight: 500;
+    height: 4rem;
+
+    &:hover {
+        background-color: hsl(166.67, 40.91%, 17.25%);
+    }
+}
+
+/*-- STATES --*/
+input[type="text"], input[type="email"], textarea, .radio-button {
+    outline: 0.08rem solid var(--grey900);
+
+    &:focus, &:hover {
+        outline: 0.10rem solid var(--green600);
+    }
+}
+
+/*-- ERROR & REQUIRED MESSAGES --*/
+.error-message {
+    display: none;
+    color: var(--red);
+}
+
+.error-message.active { display: inline; }
+
+input.invalid, textarea.invalid { outline: 0.10rem solid var(--red); }
+
+/*-- SUCCESS MESSAGE --*/
+#success-message { 
+    display: none;
+    background-color: var(--grey900);
+    color: var(--white);
+    padding: 1.75rem $sp-5;
+    width: auto;
+    align-self: center;
+    border-radius: $br-md;
+
+    header {
+        flex-direction: row;
+        gap: $sp-3;
+        margin-block-end: $sp-3;
+        font-size: $fs-xs;
+    }
+}
+
+#success-message.active { display: block; }
+
+/*-- DESKTOP VERSION --*/
+@media screen and (min-width: 48rem) {
+    input, .radio-button, 
+    textarea, button { cursor: pointer; }
+
+    main { align-self: center; width: auto; }
+
+    form { width: 46rem; padding: 2.5rem; }
+
+    .full-name, .radio-container {
+        flex-direction: row;
+        gap: $sp-4;
+
+        .form-group { width: 100%; }
+    }
+
+    textarea { height: 6rem; }
 }
